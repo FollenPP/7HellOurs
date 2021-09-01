@@ -442,7 +442,7 @@ TextureImporter:
     second: TilemapMain_145
   - first:
       213: -7291910791265899432
-    second: TilemapMain_146
+    second: Enemy_0
   - first:
       213: 8858705899985927688
     second: TilemapMain_147
@@ -740,6 +740,9 @@ TextureImporter:
   - first:
       213: 6614414530391925035
     second: TilemapMain_245
+  - first:
+      213: 4018074224661003100
+    second: Npc_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1038,7 +1041,7 @@ TextureImporter:
         width: 16
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1164,7 +1167,7 @@ TextureImporter:
         width: 10
         height: 37
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3802,7 +3805,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TilemapMain_146
+      name: Enemy_0
       rect:
         serializedVersion: 2
         x: 32
@@ -5792,6 +5795,27 @@ TextureImporter:
       bones: []
       spriteID: b21613188fe1bcb50800000000000000
       internalID: 6614414530391925035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Npc_0
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5b721af73113c730800000000000000
+      internalID: 4018074224661003100
       vertices: []
       indices: 
       edges: []
