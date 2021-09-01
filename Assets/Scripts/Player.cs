@@ -6,16 +6,22 @@ public class Player : MonoBehaviour
 {
     public float speed = 1.0f;
     private readonly float turnSide = 1;
+
+    public float attackRate = 5f;
+    float nextAttackTime = 0f;
+
+    private Animator anim;
     
     void Start()
     {
-        
+       anim = GetComponent<Animator>();
     }
 
     
     void Update()
     {
         PlayerMovement();
+        PlayerAttack();
     }
 
     void PlayerMovement()
@@ -36,6 +42,18 @@ public class Player : MonoBehaviour
         else if (horizontalInput < 0)
         {
             transform.localScale = new Vector2(-turnSide, 1);
+        }
+    }
+
+    void PlayerAttack()
+    {
+        if (Time.time >= nextAttackTime)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                anim.SetTrigger("isAttack");
+                nextAttackTime = Time.time + 2f / attackRate;
+            }
         }
     }
 }
