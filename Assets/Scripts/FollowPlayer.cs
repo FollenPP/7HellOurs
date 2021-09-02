@@ -25,4 +25,5 @@ public class FollowPlayer : MonoBehaviour
         transform.position = smoothedPosition;
         
     }
+
 }
