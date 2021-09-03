@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
+    public Preference enemyPreference;
     public int maxHp;
     public int currentHp;
-   
-    void Start()
+    public int damage;
+    public int defence;
+    public int pushForce;
+    private void Start()
     {
-        currentHp = maxHp;
-    }
-
-    public void ReceiveDamage(int damage)
-    {
-        currentHp -= damage;
-
-        if (currentHp <= 0)
+        enemyPreference = new Preference
         {
-            Destroy(gameObject);
-        }
+            maxHp = maxHp,
+            currentHp = currentHp,
+            damage = damage,
+            defence = defence,
+            pushForce = pushForce
+        };
     }
+    
 }

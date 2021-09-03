@@ -12,16 +12,19 @@ public class Player : MonoBehaviour
     public EdgeCollider2D[] hiteEnemies = new EdgeCollider2D[10];
     public ContactFilter2D filter;
     public BattleSystem battle;
-    public Weapon weaponProperty;
+    public Preference playerPreference;
     
     
     void Start()
     {
         weapon = GetComponentInChildren<EdgeCollider2D>();
-        weaponProperty = new Weapon
+        playerPreference = new Preference
         {
-            attackRate = 3,
-            forceAttack = 2
+            maxHp = 3,
+            currentHp = 3,
+            damage = 1,
+            defence = 0,
+            pushForce = 2
         };
     }
 
@@ -70,7 +73,7 @@ public class Player : MonoBehaviour
     private void Attack()
     {
         {
-            battle.MakeAttack(weapon, hiteEnemies, filter, weaponProperty);
+            battle.MakeAttack(weapon, hiteEnemies, filter, playerPreference);
         }
     }
 }

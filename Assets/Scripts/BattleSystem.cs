@@ -8,7 +8,7 @@ public class BattleSystem : MonoBehaviour
     // Получение урона(Дамаг оружия)
     // Нанести урон(Дамаг оружия)
     // 
-    public void MakeAttack(EdgeCollider2D weapon, EdgeCollider2D[] hitEnemies, ContactFilter2D filter, Weapon weaponProperty)
+    public void MakeAttack(EdgeCollider2D weapon, EdgeCollider2D[] hitEnemies, ContactFilter2D filter, Preference pref)
     {
         //Все те кто задел Collider должны нанести урон
         weapon.OverlapCollider(filter, hitEnemies);
@@ -18,30 +18,31 @@ public class BattleSystem : MonoBehaviour
                 continue;
 
             //make something who collide
-            DealDamage(hitEnemies[i], weaponProperty);
+            DealDamage(hitEnemies[i], pref);
         }
     }
 
-    protected void DealDamage(Collider2D collide, Weapon weaponProperty)
+    protected void DealDamage(Collider2D collide, Preference pref)
     {
         if (collide.CompareTag("Enemy"))
         {
-            Enemy enemy = collide.GetComponent<Enemy>();
-            ReciveDamage(enemy.currentHp, weaponProperty.attackRate, enemy, collide);
+            Preference enemyPref = collide.GetComponent<Enemy>().enemyPreference;
+            ReciveDamage(pref.currentHp, pref.damage, enemyPref, collide);
       
         }
     }
-    private void ReciveDamage(int currentHp, int damage, Enemy enemy, Collider2D collide)
+    private void ReciveDamage(int currentHp, int damage, Preference pref, Collider2D collide)
     {
         //Всех те кого задел Collider должны получить урон
-        if (enemy.currentHp <= 0)
+        if (pref.currentHp <= 0)
         {
             Destroy(collide.gameObject);
         }
         else
         {
             
-           enemy.currentHp -= damage;
+           pref.currentHp -= damage;
+            Debug.Log(collide.gameObject);
         }
 
         
