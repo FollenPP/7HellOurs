@@ -16,7 +16,7 @@ public class Collidable : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollide(Collider2D collide)
     {
         
     }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private int maxHp;
-    private int currentHp;
+    public int maxHp;
+    public int currentHp;
    
     void Start()
     {

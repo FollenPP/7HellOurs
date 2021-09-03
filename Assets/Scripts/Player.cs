@@ -7,17 +7,33 @@ public class Player : MonoBehaviour
     public float speed = 1.0f;
     private readonly float turnSide = 1;
 
+
+    public EdgeCollider2D weapon;
+    public EdgeCollider2D[] hiteEnemies = new EdgeCollider2D[10];
+    public ContactFilter2D filter;
+    public BattleSystem battle;
+    public Weapon weaponProperty;
     
     
     void Start()
     {
-       
+        weapon = GetComponentInChildren<EdgeCollider2D>();
+        weaponProperty = new Weapon
+        {
+            attackRate = 3,
+            forceAttack = 2
+        };
     }
 
     
     void Update()
     {
         PlayerMovement();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Attack();
+        }
     }
 
     void PlayerMovement()
@@ -48,6 +64,13 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Weapon"))
         {
             Debug.Log("Вы насле дамаг");
+        }
+    }
+
+    private void Attack()
+    {
+        {
+            battle.MakeAttack(weapon, hiteEnemies, filter, weaponProperty);
         }
     }
 }
