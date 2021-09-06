@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Fighter
-{ 
+public class Mover : MonoBehaviour
+{
     
 }

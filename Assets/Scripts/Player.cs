@@ -2,41 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Fighter
 {
     public float speed = 1.0f;
     private readonly float turnSide = 1;
 
 
-    public EdgeCollider2D weapon;
-    public EdgeCollider2D[] hiteEnemies = new EdgeCollider2D[10];
-    public ContactFilter2D filter;
-    public BattleSystem battle;
-    public Preference playerPreference;
+    private BoxCollider2D playerCollider;
     
     
     void Start()
     {
-        weapon = GetComponentInChildren<EdgeCollider2D>();
-        playerPreference = new Preference
-        {
-            maxHp = 3,
-            currentHp = 3,
-            damage = 1,
-            defence = 0,
-            pushForce = 2
-        };
+        
+        playerCollider = GetComponent<BoxCollider2D>();
     }
 
     
     void Update()
     {
         PlayerMovement();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Attack();
-        }
     }
 
     void PlayerMovement()
@@ -57,23 +41,6 @@ public class Player : MonoBehaviour
         else if (horizontalInput < 0)
         {
             transform.localScale = new Vector2(-turnSide, 1);
-        }
-    }
-
-   
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Weapon"))
-        {
-            Debug.Log("Вы насле дамаг");
-        }
-    }
-
-    private void Attack()
-    {
-        {
-            battle.MakeAttack(weapon, hiteEnemies, filter, playerPreference);
         }
     }
 }

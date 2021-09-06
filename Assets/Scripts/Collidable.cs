@@ -4,20 +4,31 @@ using UnityEngine;
 
 public class Collidable : MonoBehaviour
 {
-    
-    void Start()
+    public ContactFilter2D filter;
+    private BoxCollider2D collide;
+    private BoxCollider2D[] hits = new BoxCollider2D [10];
+
+    public virtual void Start()
     {
-        
+        collide = GetComponent<BoxCollider2D>();
+    }
+    
+    public virtual void Update()
+    {
+       collide.OverlapCollider(filter, hits);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i] == null)
+                continue;
+
+            OnCollide(hits[i]);
+            hits[i] = null;
+            
+        }
     }
 
-    
-    void Update()
+    public virtual void OnCollide(Collider2D coll)
     {
-        
-    }
-
-    protected virtual void OnCollide(Collider2D collide)
-    {
-        
+        Debug.Log(coll.name);
     }
 }
